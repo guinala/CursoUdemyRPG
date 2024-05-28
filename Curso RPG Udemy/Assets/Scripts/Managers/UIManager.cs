@@ -6,7 +6,12 @@ using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
-    
+
+    [Header("Stats GameObject")]
+    [SerializeField] private CharacterStats stats;
+
+    [Header("Panels")]
+    [SerializeField] private GameObject panelStats;
 
     [Header("Bars)")]
     [SerializeField] private Image healthImage;
@@ -17,6 +22,17 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI manaText;
     [SerializeField] private TextMeshProUGUI expText;
+    [SerializeField] private TextMeshProUGUI levelText;
+
+    [Header("Stats)")]
+    [SerializeField] private TextMeshProUGUI damageTextStat;
+    [SerializeField] private TextMeshProUGUI defenseTextStat;
+    [SerializeField] private TextMeshProUGUI expTextStat;
+    [SerializeField] private TextMeshProUGUI levelTextStat;
+    [SerializeField] private TextMeshProUGUI speedTextStat;
+    [SerializeField] private TextMeshProUGUI criticalTextStat;
+    [SerializeField] private TextMeshProUGUI blockTextStat;
+    [SerializeField] private TextMeshProUGUI expRequiredTextStat;
 
     private float actualHealth;
     private float actualMana;
@@ -29,6 +45,7 @@ public class UIManager : Singleton<UIManager>
     void Update()
     {
         UpdateUICharacter();    
+        UpdateStatsPanel();
     }
 
     private void UpdateUICharacter()
@@ -43,6 +60,24 @@ public class UIManager : Singleton<UIManager>
 
         expImage.fillAmount = Mathf.Lerp(expImage.fillAmount, actualExp / expNextlevel, Time.deltaTime * 10);
         expText.text = $"{((actualExp/expNextlevel)*100):F2}%";
+        levelText.text = $"Nivel {stats.Level}";
+    }
+
+    private void UpdateStatsPanel()
+    {
+        if(panelStats.activeSelf == false)
+        {
+            return;
+        }
+
+        damageTextStat.text = stats.Damage.ToString();
+        defenseTextStat.text = stats.Defense.ToString();
+        expTextStat.text = stats.Experience.ToString();
+        levelTextStat.text = stats.Level.ToString();
+        speedTextStat.text = stats.Speed.ToString();
+        criticalTextStat.text = $"{stats.Critical}%";
+        blockTextStat.text = $"{stats.Block}%";
+        expRequiredTextStat.text = stats.ExpRequired.ToString();
     }
 
     public void UpdateHealthCharacter(float pActualHealth, float pMaxHealth)

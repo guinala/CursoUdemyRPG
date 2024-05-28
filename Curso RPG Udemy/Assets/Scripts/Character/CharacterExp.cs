@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class CharacterExp : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] private CharacterStats stats;
 
+
+    [Header("Config")]
     [SerializeField] private int maxLevel;
     [SerializeField] private int expbase; //Experiencia base requerida para subir de nivel
     [SerializeField] private int expIncrement;
 
-    public int Level { get; set; }
-
+    private float actualExp;
     private float expTempActual;
     private float expRequired;
 
     // Start is called before the first frame update
     void Start()
     {
-        Level = 1;
+        stats.Level = 1;
         expRequired = expbase;
+        stats.ExpRequired = expRequired;
 
         UpdateExpBar();
     }
@@ -39,6 +43,7 @@ public class CharacterExp : MonoBehaviour
             if (expObtained > expRestant)
             {
                 expObtained -= expRestant;
+                actualExp += expObtained;
                 UpdateLevel();
                 AddExp(expObtained);
 
@@ -46,6 +51,7 @@ public class CharacterExp : MonoBehaviour
 
             else
             {
+                actualExp += expObtained;
                 expTempActual += expObtained;
                 if(expTempActual == expRequired)
                 {
@@ -60,11 +66,12 @@ public class CharacterExp : MonoBehaviour
 
     private void UpdateLevel()
     {
-        if(Level < maxLevel)
+        if(stats.Level < maxLevel)
         {
-            Level++;
+            stats.Level++;
             expTempActual = 0;
-            expRequired += expIncrement;
+            expRequired *= expIncrement;
+            stats.ExpRequired = expRequired;
         }
     }
 
