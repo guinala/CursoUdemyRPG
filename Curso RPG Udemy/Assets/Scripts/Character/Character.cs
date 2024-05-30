@@ -22,4 +22,32 @@ public class Character : MonoBehaviour
         CharacterAnimator.ReviveCharacter();
         CharacterMana.RestoreMana();
     }
+
+
+    public void OnEnable()
+    {
+        ButtonAttribute.attributeEvent += AddAttribute;
+    }
+
+    public void OnDisable()
+    {
+        ButtonAttribute.attributeEvent -= AddAttribute;
+    }
+
+    private void AddAttribute(AttributeType attributeType)
+    {
+        switch (attributeType)
+        {
+            case AttributeType.Strength:
+                //CharacterHealth.CharacterStats.strength++;
+                break;
+            case AttributeType.Dexterity:
+                //CharacterHealth.CharacterStats.dexterity++;
+                break;
+            case AttributeType.Intelligence:
+                //CharacterHealth.CharacterStats.intelligence++;
+                break;
+        }
+        //CharacterHealth.CharacterStats.availablePoints--;
+    }
 }
