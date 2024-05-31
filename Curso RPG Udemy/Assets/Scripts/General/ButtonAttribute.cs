@@ -19,5 +19,6 @@ public class ButtonAttribute : MonoBehaviour
     public void OnClick()
     {
         attributeEvent?.Invoke(attributeType);
+        Debug.Log("Evento enviado");
     }
 }

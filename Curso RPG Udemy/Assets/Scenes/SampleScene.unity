@@ -1139,7 +1139,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 220820749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 220820751}
+        m_TargetAssemblyTypeName: ButtonAttribute, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &220820749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,7 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c603abc39270d7d4880b61c09e48ace0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributeType: 0
+  attributeType: 1
 --- !u!1 &365883699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1264,10 @@ MonoBehaviour:
   criticalTextStat: {fileID: 1546648548}
   blockTextStat: {fileID: 86696776}
   expRequiredTextStat: {fileID: 1735055013}
+  availablePointsTextStat: {fileID: 2120243754}
+  strengthAttribute: {fileID: 476430228}
+  dexterityAttribute: {fileID: 1731432913}
+  intelligenceAttribute: {fileID: 1148496717}
 --- !u!1 &376727480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3628,6 +3644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32a68a7c7477f64fb5bda883d1083fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: a47e44556d6625f45aa76c2d4f2e51d5, type: 2}
 --- !u!114 &1034361055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3742,7 +3759,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1068693662}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1068693664}
+        m_TargetAssemblyTypeName: ButtonAttribute, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1068693662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3793,7 +3822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c603abc39270d7d4880b61c09e48ace0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributeType: 0
+  attributeType: 2
 --- !u!1 &1095607691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6635,7 +6664,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2108321186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2108321188}
+        m_TargetAssemblyTypeName: ButtonAttribute, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2108321186
 MonoBehaviour:
   m_ObjectHideFlags: 0

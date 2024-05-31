@@ -16,11 +16,31 @@ public class CharacterStats : ScriptableObject
     [Range(0, 100f)] public float Block;
 
     [Header("Attributes")]
-    public int strength;
-    public int dexterity;
-    public int intelligence;
+    public int strength = 1;
+    public int dexterity = 1;
+    public int intelligence = 1;
 
-    [HideInInspector] public int availablePoints;
+    [HideInInspector] public int availablePoints = 0;
+
+    public void addStrengthBonusAttribute()
+    {
+        Damage += 2;
+        Defense += 1;
+        Block += 0.03f;
+    }
+
+    public void addIntelligenceBonusAttribute()
+    {
+        Defense += 2;
+        Block += 0.2f; 
+    }
+
+    public void addDexterityBonusAttribute()
+    {
+        Damage += 2.5f;
+        Speed += 2;
+        Critical += 0.1f;
+    }
 
     public void ResetStats()
     {

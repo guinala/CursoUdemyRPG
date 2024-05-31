@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] private CharacterStats stats;
+
     public CharacterHealth CharacterHealth { get; private set; }
     public CharacterAnimator CharacterAnimator { get; private set; }
     public CharacterMana CharacterMana { get; private set; }
@@ -36,18 +38,32 @@ public class Character : MonoBehaviour
 
     private void AddAttribute(AttributeType attributeType)
     {
+        if(stats.availablePoints <= 0)
+        {
+            return;
+        }
+        Debug.Log("si");
+
         switch (attributeType)
         {
+            
             case AttributeType.Strength:
                 //CharacterHealth.CharacterStats.strength++;
+                stats.strength++;
+                stats.addStrengthBonusAttribute();
+                
                 break;
             case AttributeType.Dexterity:
                 //CharacterHealth.CharacterStats.dexterity++;
+                stats.dexterity++;
+                stats.addDexterityBonusAttribute();
                 break;
             case AttributeType.Intelligence:
                 //CharacterHealth.CharacterStats.intelligence++;
+                stats.intelligence++;
+                stats.addIntelligenceBonusAttribute();
                 break;
         }
-        //CharacterHealth.CharacterStats.availablePoints--;
+        stats.availablePoints--;
     }
 }

@@ -72,6 +72,7 @@ public class CharacterExp : MonoBehaviour
             expTempActual = 0;
             expRequired *= expIncrement;
             stats.ExpRequired = expRequired;
+            stats.availablePoints += 3;
         }
     }
 

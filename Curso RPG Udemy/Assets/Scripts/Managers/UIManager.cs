@@ -33,6 +33,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI criticalTextStat;
     [SerializeField] private TextMeshProUGUI blockTextStat;
     [SerializeField] private TextMeshProUGUI expRequiredTextStat;
+    [SerializeField] private TextMeshProUGUI availablePointsTextStat;
+    [SerializeField] private TextMeshProUGUI strengthAttribute;
+    [SerializeField] private TextMeshProUGUI dexterityAttribute;
+    [SerializeField] private TextMeshProUGUI intelligenceAttribute;
 
     private float actualHealth;
     private float actualMana;
@@ -78,6 +82,11 @@ public class UIManager : Singleton<UIManager>
         criticalTextStat.text = $"{stats.Critical}%";
         blockTextStat.text = $"{stats.Block}%";
         expRequiredTextStat.text = stats.ExpRequired.ToString();
+
+        availablePointsTextStat.text = $"Available Points: {stats.availablePoints}";
+        strengthAttribute.text = stats.strength.ToString();
+        dexterityAttribute.text = stats.dexterity.ToString();
+        intelligenceAttribute.text = stats.intelligence.ToString();
     }
 
     public void UpdateHealthCharacter(float pActualHealth, float pMaxHealth)
