@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -135,13 +142,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mapa_Interiores_0
+      name: Esq_Top_Left
       rect:
         serializedVersion: 2
         x: 0
@@ -162,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_1
+      name: Border_Top
       rect:
         serializedVersion: 2
         x: 16
@@ -183,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_2
+      name: Esq_Top_Right
       rect:
         serializedVersion: 2
         x: 32
@@ -351,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_10
+      name: Border_Left
       rect:
         serializedVersion: 2
         x: 0
@@ -393,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_12
+      name: Border_Right
       rect:
         serializedVersion: 2
         x: 32
@@ -456,7 +464,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_15
+      name: Esq_Int_Top_Left
       rect:
         serializedVersion: 2
         x: 80
@@ -477,7 +485,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_16
+      name: Esq_Int_Top_Right
       rect:
         serializedVersion: 2
         x: 96
@@ -561,7 +569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_20
+      name: Esq_Bottom_Left
       rect:
         serializedVersion: 2
         x: 0
@@ -582,7 +590,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_21
+      name: Border_Bottom
       rect:
         serializedVersion: 2
         x: 16
@@ -603,7 +611,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_22
+      name: Esq_Bottom_Right
       rect:
         serializedVersion: 2
         x: 32
@@ -666,7 +674,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_25
+      name: Esq_Int_Bot_Left
       rect:
         serializedVersion: 2
         x: 80
@@ -687,7 +695,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mapa_Interiores_26
+      name: Esq_Int_Bot_Right
       rect:
         serializedVersion: 2
         x: 96
@@ -1138,56 +1146,55 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mapa_Interiores_20: 61302127
-      Mapa_Interiores_44: 547103313
-      Mapa_Interiores_17: 622619838
-      Mapa_Interiores_46: 813489366
-      Mapa_Interiores_21: -445456884
-      Mapa_Interiores_41: 1209962152
-      Mapa_Interiores_22: -1862503749
-      Mapa_Interiores_25: 578639920
-      Mapa_Interiores_4: 867117219
-      Mapa_Interiores_28: -568490894
-      Mapa_Interiores_42: 1575883199
-      Mapa_Interiores_27: 1746076997
-      Mapa_Interiores_8: -1846739908
-      Mapa_Interiores_19: -1328852299
-      Mapa_Interiores_24: 2138299504
-      Mapa_Interiores_1: -1309312767
-      Mapa_Interiores_34: -453680260
-      Mapa_Interiores_18: 1224924298
+      Border_Bottom: -445456884
+      Border_Left: -1146154594
+      Border_Right: -1487177709
+      Border_Top: -1309312767
+      Esq_Bottom_Left: 61302127
+      Esq_Bottom_Right: -1862503749
+      Esq_Int_Bot_Left: 578639920
+      Esq_Int_Bot_Right: -1376401358
+      Esq_Int_Top_Left: -1059045030
+      Esq_Int_Top_Right: 291119572
+      Esq_Top_Left: 388048598
+      Esq_Top_Right: 2059304842
+      Floor_Default: -1733548373
       Mapa_Interiores_13: 862287656
       Mapa_Interiores_14: 1467269890
-      Mapa_Interiores_40: 1913277701
+      Mapa_Interiores_17: 622619838
+      Mapa_Interiores_18: 1224924298
+      Mapa_Interiores_19: -1328852299
+      Mapa_Interiores_23: 1462493058
+      Mapa_Interiores_24: 2138299504
+      Mapa_Interiores_27: 1746076997
+      Mapa_Interiores_28: -568490894
+      Mapa_Interiores_29: 1951984173
+      Mapa_Interiores_3: -835181951
+      Mapa_Interiores_30: -1050247913
+      Mapa_Interiores_31: 692764726
+      Mapa_Interiores_32: 1466538599
+      Mapa_Interiores_33: 2128256711
+      Mapa_Interiores_34: -453680260
+      Mapa_Interiores_35: 383805767
+      Mapa_Interiores_36: 1054929067
+      Mapa_Interiores_37: 535622493
       Mapa_Interiores_38: -1117328755
       Mapa_Interiores_39: 572568759
-      Mapa_Interiores_16: 291119572
-      Mapa_Interiores_23: 1462493058
-      Mapa_Interiores_5: 1119649212
-      Mapa_Interiores_15: -1059045030
-      Mapa_Interiores_33: 2128256711
+      Mapa_Interiores_4: 867117219
+      Mapa_Interiores_40: 1913277701
+      Mapa_Interiores_41: 1209962152
+      Mapa_Interiores_42: 1575883199
       Mapa_Interiores_43: 476546191
-      Mapa_Interiores_26: -1376401358
-      Mapa_Interiores_3: -835181951
-      Mapa_Interiores_6: 1284247312
-      Mapa_Interiores_12: -1487177709
-      Mapa_Interiores_36: 1054929067
-      Mapa_Interiores_0: 388048598
-      Mapa_Interiores_7: -840590977
-      Mapa_Interiores_32: 1466538599
-      Mapa_Interiores_9: -1029627589
-      Mapa_Interiores_37: 535622493
-      Mapa_Interiores_31: 692764726
+      Mapa_Interiores_44: 547103313
       Mapa_Interiores_45: -784826893
-      Mapa_Interiores_29: 1951984173
-      Mapa_Interiores_2: 2059304842
-      Mapa_Interiores_30: -1050247913
-      Floor_Default: -1733548373
-      Mapa_Interiores_10: -1146154594
-      Mapa_Interiores_35: 383805767
-  spritePackingTag: 
+      Mapa_Interiores_46: 813489366
+      Mapa_Interiores_5: 1119649212
+      Mapa_Interiores_6: 1284247312
+      Mapa_Interiores_7: -840590977
+      Mapa_Interiores_8: -1846739908
+      Mapa_Interiores_9: -1029627589
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

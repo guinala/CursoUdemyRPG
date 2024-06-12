@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Panels")]
     [SerializeField] private GameObject panelStats;
+    [SerializeField] private GameObject inventoryPanel;
 
     [Header("Bars)")]
     [SerializeField] private Image healthImage;
@@ -115,4 +116,18 @@ public class UIManager : Singleton<UIManager>
         //healthImage.fillAmount = actualHealth / maxHealth;
         //healthText.text = actualHealth + " / " + maxHealth;
     }
+
+    #region Panels
+
+        public void ShowStatsPanel()
+        {
+            panelStats.SetActive(!panelStats.activeSelf);
+        }
+
+        public void ShowInventoryPanel()
+        {
+            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        }
+
+    #endregion 
 }

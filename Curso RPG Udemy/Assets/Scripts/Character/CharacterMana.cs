@@ -12,6 +12,8 @@ public class CharacterMana : MonoBehaviour
 
     private CharacterHealth _characterHealth;
 
+    public bool CanRestore => Mana < maxMana;
+
     private void Awake()
     {
         _characterHealth = GetComponent<CharacterHealth>();
@@ -35,6 +37,23 @@ public class CharacterMana : MonoBehaviour
         }
     }
 
+
+    public void RestoreManaItem(float amount)
+    {
+        if(Mana > maxMana)
+        {
+            return;
+        }
+
+        Mana += amount;
+
+        if(Mana > maxMana)
+        {
+            Mana = maxMana;
+        }
+
+        UIManager.Instance.UpdateManaCharacter(Mana, maxMana);
+    }
 
     private void RegenerateMana()
     {

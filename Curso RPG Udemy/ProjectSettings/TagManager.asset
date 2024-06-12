@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TileMap_Floor
+    uniqueID: 4246584223
+    locked: 0
+  - name: TileMap_Limits
+    uniqueID: 3303118319
+    locked: 0
+  - name: Trees
+    uniqueID: 4140249657
+    locked: 0
+  - name: Houses
+    uniqueID: 1324560093
+    locked: 0
+  - name: Items
+    uniqueID: 837236017
+    locked: 0
+  - name: Character
+    uniqueID: 2190344269
+    locked: 0

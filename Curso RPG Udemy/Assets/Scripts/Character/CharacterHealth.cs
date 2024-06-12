@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterHealth : HealthBase
 {
     public static Action DefeatedEvent;
-    private bool canRestore => health < maxHealth;
+    public bool canRestore => health < maxHealth;
 
     public bool Defeated { get; private set; }
 
