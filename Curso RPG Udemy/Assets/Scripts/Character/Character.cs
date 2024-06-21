@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private CharacterStats stats;
 
+    public CharacterExp CharacterExp { get; private set; }
     public CharacterHealth CharacterHealth { get; private set; }
     public CharacterAnimator CharacterAnimator { get; private set; }
     public CharacterMana CharacterMana { get; private set; }
@@ -16,6 +17,7 @@ public class Character : MonoBehaviour
         CharacterHealth = GetComponent<CharacterHealth>();
         CharacterAnimator = GetComponent<CharacterAnimator>();
         CharacterMana = GetComponent<CharacterMana>();
+        CharacterExp = GetComponent<CharacterExp>();
     }
 
     public void RestoreCharacter()

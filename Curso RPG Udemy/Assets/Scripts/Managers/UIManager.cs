@@ -13,19 +13,22 @@ public class UIManager : Singleton<UIManager>
     [Header("Panels")]
     [SerializeField] private GameObject panelStats;
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject questsPanel;
+    [SerializeField] private GameObject questsCharacterPanel;
 
-    [Header("Bars)")]
+    [Header("Bars")]
     [SerializeField] private Image healthImage;
     [SerializeField] private Image manaImage;
     [SerializeField] private Image expImage;
 
-    [Header("Text)")]
+    [Header("Text")]
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI manaText;
     [SerializeField] private TextMeshProUGUI expText;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI coins;
 
-    [Header("Stats)")]
+    [Header("Stats")]
     [SerializeField] private TextMeshProUGUI damageTextStat;
     [SerializeField] private TextMeshProUGUI defenseTextStat;
     [SerializeField] private TextMeshProUGUI expTextStat;
@@ -38,6 +41,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI strengthAttribute;
     [SerializeField] private TextMeshProUGUI dexterityAttribute;
     [SerializeField] private TextMeshProUGUI intelligenceAttribute;
+    
 
     private float actualHealth;
     private float actualMana;
@@ -66,6 +70,7 @@ public class UIManager : Singleton<UIManager>
         expImage.fillAmount = Mathf.Lerp(expImage.fillAmount, actualExp / expNextlevel, Time.deltaTime * 10);
         expText.text = $"{((actualExp/expNextlevel)*100):F2}%";
         levelText.text = $"Nivel {stats.Level}";
+        coins.text = CoinManager.Instance.totalCoins.ToString();
     }
 
     private void UpdateStatsPanel()
@@ -127,6 +132,33 @@ public class UIManager : Singleton<UIManager>
         public void ShowInventoryPanel()
         {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        }
+
+        public void ShowQuestCharacterPanel()
+    {
+            questsCharacterPanel.SetActive(!questsCharacterPanel.activeSelf);
+        }
+
+        public void ShowQuestsPanel()
+        {
+        Debug.Log("abnrete sesamo");
+            questsPanel.SetActive(!questsPanel.activeSelf);
+        }
+
+        public void ShowExtraInteraction(ExtraInteraction extra)
+        {
+            switch(extra)
+            {
+                case ExtraInteraction.Quest:
+                    ShowQuestsPanel();
+                    break;
+                case ExtraInteraction.Shop:
+                    //ShowInventoryPanel();
+                    break;
+                case ExtraInteraction.Craft:
+                break;
+
+            }
         }
 
     #endregion 

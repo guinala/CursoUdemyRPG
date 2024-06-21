@@ -11,18 +11,20 @@ public enum Direction
 
 public class WayPointMovement : MonoBehaviour
 {
-    [SerializeField] private Direction direction;
-    [SerializeField] private float speed;
+   
+    [SerializeField] protected float speed;
 
     public Vector3 PositionToMove => WayPoint.ObtainPosMovement(actualIndexPoint);
 
-    private WayPoint WayPoint;
-    private int actualIndexPoint;
-    private Vector3 lastPosition;
+    protected WayPoint WayPoint;
+    protected Animator _animator;
+    protected int actualIndexPoint;
+    protected Vector3 lastPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        _animator = GetComponent<Animator>();
         actualIndexPoint = 0;
         WayPoint = GetComponent<WayPoint>();
     }
@@ -32,6 +34,7 @@ public class WayPointMovement : MonoBehaviour
     {
         Move();
         Rotate();
+        RotateVertical();
         if(CheckActualPointAchieved())
         {
             UpdateIndexPoint();
@@ -71,21 +74,13 @@ public class WayPointMovement : MonoBehaviour
         }
     }
 
-    private void Rotate()
+    protected virtual void Rotate()
     {
-        if(direction != Direction.Horizontal)
-        {
-            return;
-        }
+        
+    }
 
-        if(PositionToMove.x > lastPosition.x)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+    protected virtual void RotateVertical()
+    {
 
-        else
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
 }
