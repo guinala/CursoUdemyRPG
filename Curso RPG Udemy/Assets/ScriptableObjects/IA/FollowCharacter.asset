@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4a11f9d94f0504ba46be6f5fa8d39e, type: 3}
+  m_Name: FollowCharacter
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: e2b01b429130699408fd3a64ab1adada, type: 2}
+  - {fileID: 11400000, guid: 6f96aa1d9e9ca7d45a21245dd6905e11, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: a68abbfeb2c81ae4d8c5b10b778881d0, type: 2}
+    trueState: {fileID: 11400000, guid: 6088e68001e6b654f9c0af571fbb3cd5, type: 2}
+    falseState: {fileID: 11400000, guid: 78df69f292f19ae4aa9c22e103458dc7, type: 2}
+  - decision: {fileID: 11400000, guid: 7b587a2007d21f340b3cede255ece8b0, type: 2}
+    trueState: {fileID: 11400000, guid: 8d372f42dc7e34d48833c6fd772f3c35, type: 2}
+    falseState: {fileID: 11400000, guid: 6088e68001e6b654f9c0af571fbb3cd5, type: 2}

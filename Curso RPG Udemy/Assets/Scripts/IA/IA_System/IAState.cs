@@ -12,6 +12,7 @@ public class IAState : ScriptableObject
 
     public void ExecuteState(IAController controller)
     {
+        Debug.Log("Executing State: " + this.name);
         ExecuteActions(controller);
         ExecuteTransitions(controller);
     }

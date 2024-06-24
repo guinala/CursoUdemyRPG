@@ -65,6 +65,22 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
+    public void EquipSlotItem()
+    {
+        if (Inventory.Instance.itemsInventory[Index] != null)
+        {
+            interaction?.Invoke(InteractionType.Equip, Index);
+        }
+    }
+
+    public void RemoveSlotItem()
+    {
+        if (Inventory.Instance.itemsInventory[Index] != null)
+        {
+            interaction?.Invoke(InteractionType.Remove, Index);
+        }
+    }
+
     public void SelectSlot()
     {
         button.Select();

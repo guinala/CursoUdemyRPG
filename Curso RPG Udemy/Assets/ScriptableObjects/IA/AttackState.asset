@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4a11f9d94f0504ba46be6f5fa8d39e, type: 3}
   m_Name: AttackState
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: 2a9539f2e2c73f44594f75fa14ff6d08, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 7b587a2007d21f340b3cede255ece8b0, type: 2}
+    trueState: {fileID: 11400000, guid: 6088e68001e6b654f9c0af571fbb3cd5, type: 2}
+    falseState: {fileID: 11400000, guid: 1afb9f42a67f7f448b42c93a5dac13b7, type: 2}

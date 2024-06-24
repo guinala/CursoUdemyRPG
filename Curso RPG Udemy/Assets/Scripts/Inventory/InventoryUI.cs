@@ -110,8 +110,26 @@ public class InventoryUI : Singleton<InventoryUI>
         }
     }
 
+    public void EquipItem()
+    {
+        if (slotSelection != null)
+        {
+            slotSelection.EquipSlotItem();
+            slotSelection.SelectSlot();
+        }
+    }
+
+    public void RemoveItem()
+    {
+        if (slotSelection != null)
+        {
+            slotSelection.RemoveSlotItem();
+            slotSelection.SelectSlot();
+        }
+    }
+
     #region Event
-        private void OnSlotInteraction(InteractionType type, int index)
+    private void OnSlotInteraction(InteractionType type, int index)
         {
             if (type == InteractionType.Click)
             {

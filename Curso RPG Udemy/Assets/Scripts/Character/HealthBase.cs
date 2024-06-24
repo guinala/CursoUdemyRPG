@@ -30,6 +30,7 @@ public class HealthBase : MonoBehaviour
 
             if(health <= 0)
             {
+                health = 0;
                 UpdateHealthBar(health, maxHealth);
                 CharacterDefeated();
             }

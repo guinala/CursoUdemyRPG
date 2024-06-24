@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class Inventory : Singleton<Inventory>
@@ -136,6 +137,36 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
+    private void EquipItem(int index)
+    {
+        if (items[index] == null)
+        {
+            return;
+        }
+
+        if (items[index].type == ItemType.Weapons)
+        {
+            return;
+        }
+
+        items[index].Equip();
+    }
+
+    private void RemoveItem(int index)
+    {
+        if (items[index] == null)
+        {
+            return;
+        }
+
+        if (items[index].type == ItemType.Weapons)
+        {
+            return;
+        }
+
+        items[index].Remove();
+    }
+
     public void MoveItem(int initialIndex, int finalIndex)
     {
         if (items[initialIndex] == null || items[finalIndex] != null)
@@ -168,8 +199,10 @@ public class Inventory : Singleton<Inventory>
                 UseItem(index);
                 break;
             case InteractionType.Equip:
+                EquipItem(index);
                 break;
             case InteractionType.Remove:
+                RemoveItem(index);
                 break;
         }
     }
