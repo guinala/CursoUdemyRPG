@@ -23,6 +23,7 @@ public class Quests : ScriptableObject
 
     [HideInInspector] public int actualQuantity;
     [HideInInspector] public bool isCompleted;
+    public bool Accepted;
 
 
     public void UpdateQuest(int quantity)
@@ -52,10 +53,11 @@ public class Quests : ScriptableObject
         OnQuestCompleted?.Invoke(this);
     }
 
-    private void OnEnable()
+    public void Reset()
     {
-        isCompleted = false;
         actualQuantity = 0;
+        isCompleted = false;
+    
     }
 }
 

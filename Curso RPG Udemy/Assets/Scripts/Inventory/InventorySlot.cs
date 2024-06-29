@@ -69,6 +69,7 @@ public class InventorySlot : MonoBehaviour
     {
         if (Inventory.Instance.itemsInventory[Index] != null)
         {
+            Debug.Log("invasdoa");
             interaction?.Invoke(InteractionType.Equip, Index);
         }
     }

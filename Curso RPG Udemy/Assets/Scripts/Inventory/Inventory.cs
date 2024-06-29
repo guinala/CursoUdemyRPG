@@ -1,3 +1,4 @@
+using BayatGames.SaveGameFree;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class Inventory : Singleton<Inventory>
 {
+    [SerializeField] InventoryStore inventoryStore;
     [SerializeField] private Character character;
     public Character Character => character;
 
@@ -16,9 +18,37 @@ public class Inventory : Singleton<Inventory>
     [SerializeField] private InventoryItem[] items;
     public InventoryItem[] itemsInventory => items;
 
+    private readonly string KEY = "MYKEY1234567890"; 
+
     private void Start()
     {
         items = new InventoryItem[slots];
+        SaveGame.DeleteAll();
+        LoadData();
+    }
+
+    public int ObtainItemsAmount(string itemID)
+    {
+        List<int> indexes = VerifyStock(itemID);
+        int total = 0;
+        foreach(int i in indexes)
+        {
+            if (items[i].id == itemID)
+            {
+                total += items[i].Quantity;
+            }
+        }
+
+        return total;
+    }
+
+    public void ConsumeItem(string ID)
+    {
+        List<int> indexes = VerifyStock(ID);
+        if(indexes.Count > 0)
+        {
+            DeleteItem(indexes[indexes.Count - 1]);
+        }
     }
 
     public void AddItem(InventoryItem itemReference, int addQuantity)
@@ -71,6 +101,8 @@ public class Inventory : Singleton<Inventory>
         {
             AddItemInSlot(itemReference, addQuantity);
         }
+
+        SaveData();
     }
 
     private List<int> VerifyStock(string id)
@@ -122,6 +154,8 @@ public class Inventory : Singleton<Inventory>
         {
             InventoryUI.Instance.drawItem(items[index], items[index].Quantity, index);
         }
+
+        SaveData();
     }
 
     private void UseItem(int index)
@@ -141,14 +175,17 @@ public class Inventory : Singleton<Inventory>
     {
         if (items[index] == null)
         {
+            Debug.Log("no sirve");
             return;
         }
 
-        if (items[index].type == ItemType.Weapons)
+        if (items[index].type != ItemType.Weapons)
         {
+            Debug.Log("no quiero");
             return;
         }
 
+        Debug.Log("voy a quiepar");
         items[index].Equip();
     }
 
@@ -182,6 +219,8 @@ public class Inventory : Singleton<Inventory>
         //Delete item in initial slot
         items[initialIndex] = null;
         InventoryUI.Instance.drawItem(null, 0, initialIndex);
+
+        SaveData();
     }
 
     #region Event
@@ -193,8 +232,10 @@ public class Inventory : Singleton<Inventory>
 
     private void SlotResponse(InteractionType type, int index)
     {
+        Debug.Log("voy a elegir");
         switch (type)
         {
+
             case InteractionType.Use:
                 UseItem(index);
                 break;
@@ -215,5 +256,72 @@ public class Inventory : Singleton<Inventory>
     #endregion
 
 
+    #region Save/Load
 
+
+    private InventoryItem ItemIsInStore(string id)
+    {
+        foreach(InventoryItem item in inventoryStore.Items)
+        {
+            if (item.id == id)
+            {
+                return item;
+            }
+        }
+
+        return null;
+    }
+    
+    private void SaveData()
+    {
+        InventoryData data = new InventoryData();
+        data.ItemsData = new string[slots];
+        data.ItemsAmount = new int[slots];
+
+        for(int i = 0; i < slots; i++)
+        {
+            if (items[i] != null || string.IsNullOrEmpty(items[i].id))
+            {
+                data.ItemsData[i] = null;
+                data.ItemsAmount[i] = 0;
+            }
+
+            else
+            {
+                data.ItemsData[i] = items[i].id;
+                data.ItemsAmount[i] = items[i].Quantity;
+            }
+
+            SaveGame.Save(KEY, data);
+        }
+    }
+
+    private void LoadData()
+    {
+        if(SaveGame.Exists(KEY))
+        {
+            InventoryData data = SaveGame.Load<InventoryData>(KEY);
+            for(int i = 0; i < slots; i++)
+            {
+                if (data.ItemsData[i] != null)
+                {
+                    InventoryItem item = ItemIsInStore(data.ItemsData[i]);
+                    if (item != null)
+                    {
+                        items[i] = item.CopyItem();
+                        items[i].Quantity = data.ItemsAmount[i];
+                        InventoryUI.Instance.drawItem(items[i], items[i].Quantity, i);
+                    }
+                }
+                else
+                {
+                    items[i] = null;
+                    //InventoryUI.Instance.drawItem(null, 0, i);
+                }
+            }
+        }
+    }
+
+
+    #endregion
 }

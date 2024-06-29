@@ -9,7 +9,8 @@ public class WeaponItem : InventoryItem
 
     public override bool Equip()
     {
-        if(WeaponContainer.Instance.equipedWapon == null)
+        Debug.Log("Equipando");
+        if(WeaponContainer.Instance.equipedWapon != null)
         {
             return false;
         }
@@ -27,5 +28,12 @@ public class WeaponItem : InventoryItem
 
         WeaponContainer.Instance.RemoveWeapon();
         return true;
+    }
+
+    public override string DescriptionCraftThing()
+    {
+        string description = $"Critical Chance: {weapon.CriticalChance}%\n" +
+            $"Block Chance: {weapon.BlockChance}%";
+        return description;
     }
 }

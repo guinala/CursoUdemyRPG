@@ -14,10 +14,17 @@ public class WeaponContainer : Singleton<WeaponContainer>
     {
         if (weaponIcon != null)
         {
+            equipedWapon = item;
             weaponIcon.sprite = item.weapon.iconWeapon;
             weaponIcon.gameObject.SetActive(true);
-            skillIcon.sprite = item.weapon.skillIcon;
-            skillIcon.gameObject.SetActive(true);
+
+            if(equipedWapon.weapon.weaponType == WeaponType.Magic)
+            {
+                skillIcon.sprite = item.weapon.skillIcon;
+                skillIcon.gameObject.SetActive(true);
+            }
+
+            Inventory.Instance.Character.CharacterAttack.EquipWeapon(item);
         }
     }
 
@@ -26,6 +33,7 @@ public class WeaponContainer : Singleton<WeaponContainer>
         weaponIcon.gameObject.SetActive(false);
         skillIcon.gameObject.SetActive(false);
         equipedWapon = null;
+        Inventory.Instance.Character.CharacterAttack.RemoveWeapon();
     }
     
 }

@@ -19,7 +19,7 @@ public class InspectorQuestDescription : QuestDescription
     public void AcceptQuest()
     {
        if(loadedQuest == null) return;
-
+       loadedQuest.Accepted = true;
        QuestManager.Instance.AddQuest(loadedQuest);
         gameObject.SetActive(false);
     }

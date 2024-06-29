@@ -9,12 +9,14 @@ public class AddItem : MonoBehaviour
    [SerializeField] private InventoryItem itemReference;
    [SerializeField] private int addQuantity;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("hola");
         if (other.CompareTag("Player"))
         {
             Inventory.Instance.AddItem(itemReference, addQuantity);
             Destroy(gameObject);
+            Debug.Log("si");
         }
     }
     

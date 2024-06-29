@@ -41,4 +41,11 @@ public class ObjectPool : MonoBehaviour
 
         return gameObject;
     }
+
+    public void DestroyPool()
+    {
+
+        Destroy(container);
+        pool.Clear();
+    }
 }

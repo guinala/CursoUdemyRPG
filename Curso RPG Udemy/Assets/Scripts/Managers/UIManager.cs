@@ -12,9 +12,12 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Panels")]
     [SerializeField] private GameObject panelStats;
+    [SerializeField] private GameObject panelShop;
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject questsPanel;
     [SerializeField] private GameObject questsCharacterPanel;
+    [SerializeField] private GameObject panelCraft;
+    [SerializeField] private GameObject panelCraftInfo;
 
     [Header("Bars")]
     [SerializeField] private Image healthImage;
@@ -37,6 +40,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI criticalTextStat;
     [SerializeField] private TextMeshProUGUI blockTextStat;
     [SerializeField] private TextMeshProUGUI expRequiredTextStat;
+    [SerializeField] private TextMeshProUGUI expTotalTextStat;
     [SerializeField] private TextMeshProUGUI availablePointsTextStat;
     [SerializeField] private TextMeshProUGUI strengthAttribute;
     [SerializeField] private TextMeshProUGUI dexterityAttribute;
@@ -88,6 +92,7 @@ public class UIManager : Singleton<UIManager>
         criticalTextStat.text = $"{stats.Critical}%";
         blockTextStat.text = $"{stats.Block}%";
         expRequiredTextStat.text = stats.ExpRequired.ToString();
+        expTotalTextStat.text = stats.ExpTotal.ToString();
 
         availablePointsTextStat.text = $"Available Points: {stats.availablePoints}";
         strengthAttribute.text = stats.strength.ToString();
@@ -133,10 +138,28 @@ public class UIManager : Singleton<UIManager>
         {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
         }
+        
+        
+        public void ShowShopPanel()
+        {
+            panelShop.SetActive(!panelShop.activeSelf);
+        }
+
+        public void ShowCraftanel()
+        {
+            panelCraft.SetActive(!panelCraft.activeSelf);
+            ShowCraftInfoPanel(false);
+        }
+
 
         public void ShowQuestCharacterPanel()
-    {
+        {
             questsCharacterPanel.SetActive(!questsCharacterPanel.activeSelf);
+        }
+
+        public void ShowCraftInfoPanel(bool state)
+        {
+            panelCraftInfo.SetActive(state);
         }
 
         public void ShowQuestsPanel()
@@ -153,10 +176,12 @@ public class UIManager : Singleton<UIManager>
                     ShowQuestsPanel();
                     break;
                 case ExtraInteraction.Shop:
-                    //ShowInventoryPanel();
+                    ShowShopPanel();
                     break;
                 case ExtraInteraction.Craft:
-                break;
+                    ShowCraftanel();
+                    break;
+               
 
             }
         }

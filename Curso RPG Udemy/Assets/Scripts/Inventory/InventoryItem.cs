@@ -47,4 +47,9 @@ public class InventoryItem : ScriptableObject
     {
         return true;
     }
+
+    public virtual string DescriptionCraftThing()
+    {
+        return "";
+    }
 }

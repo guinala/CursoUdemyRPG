@@ -12,6 +12,7 @@ public class CharacterStats : ScriptableObject
     public float Speed = 5f;
     public float Experience;
     public float ExpRequired;
+    public float ExpTotal;
     [Range(0, 100f)] public float Critical;
     [Range(0, 100f)] public float Block;
 
@@ -42,6 +43,20 @@ public class CharacterStats : ScriptableObject
         Critical += 0.1f;
     }
 
+    public void AddBonusWeapon(Weapon weapon)
+    {
+        Damage += weapon.damage;
+        Block += weapon.BlockChance;
+        Critical += weapon.CriticalChance;
+    }
+
+    public void RemoveBonusWeapon(Weapon weapon)
+    {
+        Damage -= weapon.damage;
+        Block -= weapon.BlockChance;
+        Critical -= weapon.CriticalChance;
+    }
+
     public void ResetStats()
     {
         Damage = 5f;
@@ -50,6 +65,7 @@ public class CharacterStats : ScriptableObject
         Speed = 5f;
         Experience = 0f;
         ExpRequired = 0f;
+        ExpTotal = 0f;
         Critical = 0f;
         Block = 0f;
 

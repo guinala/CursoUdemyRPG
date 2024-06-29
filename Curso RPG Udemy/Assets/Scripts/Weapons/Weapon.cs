@@ -18,6 +18,7 @@ public class Weapon : ScriptableObject
     public float damage;
 
     [Header("Magic Weapon")]
+    public Projectile projectilePrefab;
     public float manaCost;
 
     [Header("Stats")]

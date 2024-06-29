@@ -17,6 +17,11 @@ public class AttackCharacterAction : IAAction
             return;
         }
 
+        if(controller.CharacterReference.GetComponent<CharacterHealth>().Defeated)
+        {
+            return;
+        }
+
         if(controller.IsTimeToAttack() == false)
         {
             return;

@@ -6,9 +6,11 @@ public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private string layerIdle;
     [SerializeField] private string layerWalking;
+    [SerializeField] private string layerAttacking; 
 
     private Animator _animator;
     private CharacterMovement _characterMovement;
+    private CharacterAttack _characterAttack;
     private readonly int direccionX = Animator.StringToHash("X");
     private readonly int direccionY = Animator.StringToHash("Y");
     private readonly int defeated = Animator.StringToHash("Defeated");
@@ -18,14 +20,9 @@ public class CharacterAnimator : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _characterMovement = GetComponent<CharacterMovement>();
+        _characterAttack = GetComponent<CharacterAttack>();
     }
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -52,7 +49,12 @@ public class CharacterAnimator : MonoBehaviour
 
     private void UpdateLayer()
     {
-        if (_characterMovement.inMovement)
+        if(_characterAttack.Attacking)
+        {
+            ActiveLayer(layerAttacking);
+        }
+
+        else if (_characterMovement.inMovement)
         {
             ActiveLayer(layerWalking);
         }
@@ -73,6 +75,12 @@ public class CharacterAnimator : MonoBehaviour
     {
         if(_animator.GetLayerWeight(_animator.GetLayerIndex(layerIdle)) == 1)
              _animator.SetBool(defeated, true);
+
+        else
+        {
+            ActiveLayer(layerIdle);
+            _animator.SetBool(defeated, true);
+        }
     }
 
     private void OnEnable()

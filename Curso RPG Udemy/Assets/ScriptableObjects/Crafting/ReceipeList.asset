@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feebb780bc8f0d4498258f467ed93b4, type: 3}
+  m_Name: ReceipeList
+  m_EditorClassIdentifier: 
+  receipes:
+  - Name: Strong Potion
+    Material1: {fileID: 11400000, guid: 31902d84914f4d64ba40dbd07cc2222f, type: 2}
+    amountRequired1: 2
+    Material2: {fileID: 11400000, guid: e4f0536ed465a5d4faada8fb10daeff9, type: 2}
+    amountRequired2: 2
+    Result: {fileID: 11400000, guid: 9966e4bd2fc4ced4995456c3a2e1c950, type: 2}
+    amountResult: 1

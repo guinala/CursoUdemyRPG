@@ -14,7 +14,7 @@ public class CharacterMovement : MonoBehaviour
         get { return _movement; }
     }
     */
-
+    private CharacterHealth _instance;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _input;
     private Vector2 _movement;
@@ -23,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Awake()
     {
+        _instance = GetComponent<CharacterHealth>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
     
@@ -36,6 +37,11 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_instance.Defeated)
+        {
+            _movement = Vector2.zero;
+            return;
+        }
         _input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
 

@@ -19,6 +19,11 @@ public class FollowAction : IAAction
             return;
         }
 
+        if (controller.CharacterReference.GetComponent<CharacterHealth>().Defeated)
+        {
+            return;
+        }
+
         Vector3 directionToCharacter = controller.CharacterReference.position - controller.transform.position;
         Vector3 direction = directionToCharacter.normalized;
         float distancia = directionToCharacter.magnitude;

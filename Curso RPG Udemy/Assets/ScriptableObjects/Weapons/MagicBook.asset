@@ -16,6 +16,7 @@ MonoBehaviour:
   skillIcon: {fileID: -89048917, guid: 9c4f1b17e2da34041962d18e93086f6a, type: 3}
   weaponType: 0
   damage: 4
+  projectilePrefab: {fileID: 2233799022628091445, guid: f62e9186f9e451c42a705c892e32af7b, type: 3}
   manaCost: 10
   BlockChance: 1.5
   CriticalChance: 0.5

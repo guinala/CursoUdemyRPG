@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CharacterType
+{
+    Player, IA
+}
+
+
 public class CharacterFX : MonoBehaviour
 {
     [SerializeField] private GameObject canvasPrefab;
     [SerializeField] private Transform canvasTransform;
 
-    private ObjectPool objectPool;
+    [SerializeField] private ObjectPool objectPool;
+    [SerializeField] private CharacterType characterType;
 
-    // Start is called before the first frame update
+    private EnemyHealth enemyHealth;
+
     private void Awake()
     {
-        objectPool = GetComponent<ObjectPool>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
@@ -21,11 +29,11 @@ public class CharacterFX : MonoBehaviour
         objectPool.CreatePool(canvasPrefab);
     }
 
-    private IEnumerator ShowText(float quantity)
+    private IEnumerator ShowText(float quantity, Color color)
     {
         GameObject newTextObject = objectPool.ObtainInstance();
         CanvasAnimationText canvasAnimationText = newTextObject.GetComponent<CanvasAnimationText>();
-        canvasAnimationText.SetText(quantity);
+        canvasAnimationText.SetText(quantity, color);
 
         newTextObject.transform.SetParent(canvasTransform);
         newTextObject.transform.position = canvasTransform.position;
@@ -37,18 +45,32 @@ public class CharacterFX : MonoBehaviour
 
     }
 
-    private void DamageResponse(float damage)
+    private void DamageResponsePlayer(float damage)
     {
-        StartCoroutine(ShowText(damage));
+        if(characterType == CharacterType.Player)
+        {
+            StartCoroutine(ShowText(damage, Color.black));
+        }
     }
+
+    private void DamageResponseEnemy(float damage, EnemyHealth health)
+    {
+        if(characterType == CharacterType.IA && enemyHealth == health)
+        {
+            StartCoroutine(ShowText(damage, Color.red));
+        }
+    }
+
 
     private void OnEnable()
     {
-        IAController.OnDamageRealized += DamageResponse;
+        IAController.OnDamageRealized += DamageResponsePlayer;
+        CharacterAttack.OnEnemyDamaged += DamageResponseEnemy;
     }
 
     private void OnDisable()
     {
-        IAController.OnDamageRealized -= DamageResponse;
+        IAController.OnDamageRealized -= DamageResponsePlayer;
+        CharacterAttack.OnEnemyDamaged -= DamageResponseEnemy;
     }
 }

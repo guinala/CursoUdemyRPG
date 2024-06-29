@@ -14,7 +14,6 @@ public class CharacterExp : MonoBehaviour
     [SerializeField] private int expIncrement;
 
     private float actualExp;
-    private float expTempActual;
     private float expRequired;
 
     // Start is called before the first frame update
@@ -37,39 +36,33 @@ public class CharacterExp : MonoBehaviour
 
     public void AddExp(float expObtained)
     {
-        if (expObtained > 0f)
+        if (expObtained <= 0) return;
+        actualExp += expObtained;
+        stats.Experience = actualExp;
+
+        if(actualExp == expRequired)
         {
-            float expRestant = expRequired - expTempActual;
-            if (expObtained > expRestant)
-            {
-                expObtained -= expRestant;
-                actualExp += expObtained;
-                UpdateLevel();
-                AddExp(expObtained);
-
-            }
-
-            else
-            {
-                actualExp += expObtained;
-                expTempActual += expObtained;
-                if(expTempActual == expRequired)
-                {
-                    UpdateLevel();
-                }
-            }
-
+            UpdateLevel();
+        }
+        else if (actualExp > expRequired)
+        {
+            float diference = actualExp - expRequired;
+            UpdateLevel();
+            AddExp(diference);
         }
 
+        stats.ExpTotal += actualExp;
         UpdateExpBar();
     }
+
 
     private void UpdateLevel()
     {
         if(stats.Level < maxLevel)
         {
             stats.Level++;
-            expTempActual = 0;
+            stats.Experience = 0;
+            actualExp = 0;
             expRequired *= expIncrement;
             stats.ExpRequired = expRequired;
             stats.availablePoints += 3;
@@ -78,7 +71,22 @@ public class CharacterExp : MonoBehaviour
 
     private void UpdateExpBar()
     {
-        UIManager.Instance.UpdateExpCharacter(expTempActual, expRequired);
+        UIManager.Instance.UpdateExpCharacter(actualExp, expRequired);
     }
 
+
+    private void OnEnable()
+    {
+        EnemyHealth.EnemyLooted += AddExpEnemy;
+    }
+
+    private void OnDisable()
+    {
+        EnemyHealth.EnemyLooted -= AddExpEnemy;
+    }
+
+    private void AddExpEnemy(float exp)
+    {
+        AddExp(exp);
+    }
 }

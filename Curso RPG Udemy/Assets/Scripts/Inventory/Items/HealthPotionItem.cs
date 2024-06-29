@@ -17,4 +17,10 @@ public class HealthPotionItem : InventoryItem
 
         return false;
     }
+
+    public override string DescriptionCraftThing()
+    {
+        string description = $"Restore {healthAmount} health points.";
+        return description;
+    }
 }

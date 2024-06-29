@@ -70,6 +70,10 @@ public class QuestManager : Singleton<QuestManager>
 
     private void OnEnable()
     {
+        for(int i = 0; i < availableQuests.Length; i++)
+        {
+            availableQuests[i].Reset();
+        }
         Quests.OnQuestCompleted += QuestCompleted;
     }
 
@@ -113,7 +117,7 @@ public class QuestManager : Singleton<QuestManager>
     public void AddProgress(string QuestID, int quantity)
     {
         Quests updateQuest = QuestExists(QuestID);
-        if (updateQuest != null)
+        if (updateQuest != null && updateQuest.Accepted == true)
         {
             updateQuest.UpdateQuest(quantity);
         }

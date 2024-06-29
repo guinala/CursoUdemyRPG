@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: MagicBook
   name: Spell Book
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 71c28647b9f0bb54d995a7b4bd7470c3, type: 3}
   description: A magic book with powerful spells
   type: 0
   Consumible: 0
